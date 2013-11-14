@@ -4,7 +4,7 @@ machine:
 
 test:
   pre:
-    - sed -i -e 's/apc\.enabled=1/apc\.enabled=0/' ~/.phpenv/versions/5.4.15/etc/php.ini
+    - "sed -i -e 's/apc\.enabled=1/apc\.enabled=0/' ~/.phpenv/versions/5.4.15/etc/php.ini"
     - 'nohup bash -c "php -S 127.0.0.1:8000 2>&1 &"'
   override:
     - 'wget "http://127.0.0.1:8000"'
