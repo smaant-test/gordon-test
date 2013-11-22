@@ -5,3 +5,9 @@ machine:
 dependencies:
   pre:
     - echo y | android update sdk --no-ui --filter "android-18"
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: quiet-depths-3134
