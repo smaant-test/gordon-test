@@ -2,10 +2,6 @@ machine:
   python:
     version: 2.7.3
 
-dependencies:
-  pre:
-    - echo y | android update sdk --no-ui --filter "android-18"
-
 deployment:
   staging:
     branch: master
