@@ -2,8 +2,8 @@
 #  python:
 #    version: 2.7.3
 
-deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: quiet-depths-3134
+#deployment:
+#  staging:
+#    branch: master
+#    heroku:
+#      appname: quiet-depths-3134
