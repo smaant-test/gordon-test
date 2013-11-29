@@ -1,5 +1,5 @@
 from nose.tools import *
+import gevent_psycopg2
 
 def test_nothing():
-  from gevent.hub import get_hub, reinit
   assert_true(True)
