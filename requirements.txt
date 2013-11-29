@@ -31,7 +31,7 @@ ecdsa
 eventlet==0.9.16
 fixture==1.4
 flask-babel==0.8
-flask-beaker==0.3
+git+git://github.com/spoqa/flask-beaker.git#egg=flask-beaker-0.3
 flask-s3==0.1.5
 gdata==2.0.17
 gevent-psycopg2==0.0.3
