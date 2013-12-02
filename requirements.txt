@@ -5,5 +5,5 @@ Werkzeug==0.9.4
 gunicorn==18.0
 itsdangerous==0.23
 wsgiref==0.1.2
-http://gevent.googlecode.com/files/gevent-1.0b3.tar.gz
+http://gevent.googlecode.com/files/gevent-1.0b3.tar.gz#egg=gevent-1.0b3
 gevent-psycopg2==0.0.3
