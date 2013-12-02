@@ -1,8 +1,9 @@
 machine:
+  ruby:
+    version: 2.0.0-p0
+
 #  python:
 #    version: 2.7.3
-  ruby:
-    version: jruby-1.7.6
 
 #deployment:
 #  staging:
