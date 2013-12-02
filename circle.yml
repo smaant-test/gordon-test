@@ -3,8 +3,6 @@ machine:
 #    version: 2.7.3
   ruby:
     version: jruby-1.7.6
-  post:
-    - echo "export __rvm_project_rvmrc=0" >> ~/.bashrc
 
 #deployment:
 #  staging:
