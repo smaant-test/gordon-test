@@ -4,6 +4,10 @@ machine:
   environment:
     FOO: bar
 
+dependencies:
+  pre:
+    - rvm 1.8.7-p352 do gem update --system
+
 #  python:
 #    version: 2.7.3
 
