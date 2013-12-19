@@ -7,7 +7,7 @@ machine:
 dependencies:
   pre:
     - rvm 1.8.7-p352 do gem update --system
-  cache-directories:
+  cache_directories:
     - ~/.rvm/gems
 
 #  python:
