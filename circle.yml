@@ -4,10 +4,6 @@ machine:
   environment:
     FOO: bar
 
-dependencies:
-  pre:
-    - gem update
-
 #  python:
 #    version: 2.7.3
 
