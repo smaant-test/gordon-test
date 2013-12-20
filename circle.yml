@@ -1,12 +1,12 @@
 machine:
   ruby:
-    version: 1.8.7-p352
+    version: 1.9.2-p180
   environment:
     FOO: bar
 
 dependencies:
   pre:
-    - rvm 1.8.7-p352 do gem update --system
+    - rvm 1.9.2-p180 do gem update --system
   cache_directories:
     - ~/.rvm/gems
 
