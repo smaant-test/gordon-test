@@ -4,13 +4,20 @@ machine:
   environment:
     FOO: bar
 
+checkout:
+  pre:
+    - sudo service postgresql stop
+  post:
+    - sudo service postgresql start
+
 dependencies:
   pre:
     - rvm 1.9.2-p180 do gem update --system
   override:
-    - bundle check --path=vendor/bundle --without debugging || bundle install --path=vendor/bundle --without debugging --clean
+    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without debugging --clean
   cache_directories:
     - ~/.rvm/gems
+    - /var/lib/postgresql/9.3/main
 
 #  python:
 #    version: 2.7.3
