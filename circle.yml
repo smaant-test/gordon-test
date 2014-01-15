@@ -4,12 +4,6 @@ machine:
   environment:
     FOO: bar
 
-dependencies:
-  pre:
-    - rvm 1.9.2-p180 do gem update --system
-  override:
-    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without debugging --clean
-
 deployment:
   master_merge:
     branch: 'master'
