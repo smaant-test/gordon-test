@@ -1,23 +1,17 @@
 # Arbitrary comment
 # Another arbitrary comment
 
-machine:
-  ruby:
-    version: 1.9.2-p180
-  environment:
-    FOO: bar
-
 dependencies:
   pre:
     - wget -O /tmp/selenium-server-standalone-2.39.0.jar "https://code.google.com/p/selenium/downloads/detail?name=selenium-server-standalone-2.39.0.jar"
     - java -jar /tmp/selenium-server-standalone-2.39.0.jar:
         background: true
 
-deployment:
-  master_merge:
-    branch: 'master'
-    commands:
-      - git push -f origin master:deployment/staging
+#deployment:
+#  master_merge:
+#    branch: 'master'
+#    commands:
+#      - git push -f origin master:deployment/staging
 
 #  python:
 #    version: 2.7.3
