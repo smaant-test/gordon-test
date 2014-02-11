@@ -1,5 +1,6 @@
-# Arbitrary comment
-# Another arbitrary comment
+machine:
+  python:
+    version: 2.7.3
 
 dependencies:
   pre:
@@ -12,9 +13,6 @@ dependencies:
 #    branch: 'master'
 #    commands:
 #      - git push -f origin master:deployment/staging
-
-#  python:
-#    version: 2.7.3
 
 #deployment:
 #  staging:
