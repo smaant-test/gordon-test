@@ -9,6 +9,7 @@ from SimpleHTTPServer import SimpleHTTPRequestHandler
 @timed(150)
 def test_ff_works_with_selenium():
     driver = webdriver.Firefox()
+    driver.get("http://localhost:8000")
 
     for i in range(100):
         element = driver.find_element_by_id("myButtonId")
