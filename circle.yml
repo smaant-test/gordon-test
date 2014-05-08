@@ -2,10 +2,6 @@ machine:
   python:
     version: 3.4.0
 
-checkout:
-  override:
-    - pyvenv venv
-
 dependencies:
   pre:
     #- wget -O /tmp/selenium-server-standalone-2.39.0.jar "https://code.google.com/p/selenium/downloads/detail?name=selenium-server-standalone-2.39.0.jar"
