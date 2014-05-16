@@ -6,12 +6,11 @@ from nose.tools import *
 from BaseHTTPServer import HTTPServer
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 
-@timed(150)
 def test_ff_works_with_selenium():
     driver = webdriver.Firefox()
     driver.get("http://localhost:8000")
 
-    for i in range(100):
+    for i in range(1):
         element = driver.find_element_by_id("myButtonId")
         element.click()
         print "fetched {}".format(element)
