@@ -12,8 +12,7 @@ dependencies:
 
 test:
   post:
-    - echo ${RUN_NIGHTLY_BUILD}
-    - echo ${INTEGRATION_TARGET}
+    - cat ~/.circlerc
     - if [ -n "${RUN_NIGHTLY_BUILD}" ]; then ./bin/run-integration-tests.sh ${INTEGRATION_TARGET}; fi
 
 deployment:
