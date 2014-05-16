@@ -10,14 +10,12 @@ dependencies:
     - cd server-root; python -m SimpleHTTPServer 8000:
         background: true
 
-#deployment:
-#  master_merge:
-#    branch: 'master'
-#    commands:
-#      - git push -f origin master:deployment/staging
+test:
+  post:
+    - if [ -n "${RUN_NIGHTLY_BUILD}" ]; then ./bin/run-integration-tests.sh ${INTEGRATION_TARGET}; fi
 
-#deployment:
-#  staging:
-#    branch: master
-#    heroku:
-#      appname: quiet-depths-3134
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: quiet-depths-3134
