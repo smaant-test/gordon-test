@@ -1,6 +1,8 @@
 machine:
   python:
     version: 2.7.6
+  ruby:
+    version: 2.0.0-p451
 
 dependencies:
   pre:
@@ -17,7 +19,6 @@ test:
       if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
         ./bin/run-integration-tests.sh ${INTEGRATION_TARGET};
       fi
-    - cat "bar"
 
 deployment:
   staging:
