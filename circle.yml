@@ -1,4 +1,9 @@
 machine:
+  pre:
+    - >
+      sed -i -e 's/^# http\.port: 9200/http.port: 9999/' /etc/elasticsearch/elasticsearch.yml
+  services:
+    - elasticsearch
   python:
     version: 2.7.6
   ruby:
