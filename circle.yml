@@ -11,11 +11,15 @@ machine:
 
 dependencies:
   pre:
+    - >
+      wget https://docs.google.com/uc?export=download&id=0B6J_jA_JwqyjUGRTS01DREFkdHZma3V1VTU5bG1BREhEMEdR -O ndivi-1.0.27.gem
+    - gem install --local ndivi-1.0.27.gem
+  #pre:
     #- wget -O /tmp/selenium-server-standalone-2.39.0.jar "https://code.google.com/p/selenium/downloads/detail?name=selenium-server-standalone-2.39.0.jar"
     #- java -jar /tmp/selenium-server-standalone-2.39.0.jar:
     #    background: true
-    - cd server-root; python -m SimpleHTTPServer 8000:
-        background: true
+    #- cd server-root; python -m SimpleHTTPServer 8000:
+    #    background: true
   override:
     - echo "hello"
 
