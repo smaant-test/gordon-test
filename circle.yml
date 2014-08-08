@@ -1,6 +1,8 @@
 machine:
   python:
     version: 2.7.6
+  php:
+    version: 5.3.3
 
 dependencies:
   pre:
