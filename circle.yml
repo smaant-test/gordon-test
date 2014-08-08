@@ -1,15 +1,6 @@
 machine:
-  pre:
-    - >
-      sed -i -e 's/^# http\.port: 9200/http.port: 9999/' /etc/elasticsearch/elasticsearch.yml
-  services:
-    - elasticsearch
-  environment:
-    FOO: $(basename ${CIRCLE_BRANCH})
   python:
     version: 2.7.6
-  ruby:
-    version: 2.0.0-p451
 
 dependencies:
   pre:
