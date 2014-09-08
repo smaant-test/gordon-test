@@ -11,8 +11,6 @@ dependencies:
         background: true
     - cd server-root; python -m SimpleHTTPServer 8000:
         background: true
-  override:
-    - echo "hello"
 
 test:
   post:
