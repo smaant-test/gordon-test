@@ -12,13 +12,21 @@ dependencies:
     - cd server-root; python -m SimpleHTTPServer 8000:
         background: true
 
+#test:
+#  post:
+#    - cat ~/.circlerc
+#    - >
+#      if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
+#        ./bin/run-integration-tests.sh ${INTEGRATION_TARGET};
+#      fi
+
 test:
-  post:
-    - cat ~/.circlerc
-    - >
-      if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
-        ./bin/run-integration-tests.sh ${INTEGRATION_TARGET};
-      fi
+  override:
+    - $ANDROID_HOME/tools/emulator -avd testing -no-window -no-boot-anim -no-audio:
+        background: true
+    - ./wait.sh
+    - ./gradlew clean connectedAndroidTestDevelopmentDebug
+
 
 deployment:
   staging:
