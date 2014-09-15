@@ -1,10 +1,8 @@
 machine:
-  environment:
-    PATH: /home/ubuntu/play-1.2.7:${PATH}
   python:
     version: 2.7.6
-#  php:
-#    version: 5.3.3
+  services:
+    - docker
 
 #dependencies:
 #  pre:
@@ -16,13 +14,7 @@ machine:
 
 dependencies:
   pre:
-    - >
-      if [ ! -e /home/ubuntu/play-1.2.7/play ]; then
-        wget --directory-prefix /home/ubuntu/ http://downloads.typesafe.com/play/1.2.7/play-1.2.7.zip
-        unzip -d /home/ubuntu/ /home/ubuntu/play-1.2.7.zip
-      fi
-  cache_directories:
-    - /home/ubuntu/play-1.2.7
+    - docker pull ubuntu:14.04
 
 #test:
 #  post:
