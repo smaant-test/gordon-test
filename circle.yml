@@ -1,16 +1,28 @@
 machine:
+  environment:
+    PATH: /home/ubuntu/play-1.2.7:${PATH}
   python:
     version: 2.7.6
-  php:
-    version: 5.3.3
+#  php:
+#    version: 5.3.3
+
+#dependencies:
+#  pre:
+#    - wget -O /tmp/selenium-server-standalone-2.39.0.jar "https://code.google.com/p/selenium/downloads/detail?name=selenium-server-standalone-2.39.0.jar"
+#    - java -jar /tmp/selenium-server-standalone-2.39.0.jar:
+#        background: true
+#    - cd server-root; python -m SimpleHTTPServer 8000:
+#        background: true
 
 dependencies:
   pre:
-    - wget -O /tmp/selenium-server-standalone-2.39.0.jar "https://code.google.com/p/selenium/downloads/detail?name=selenium-server-standalone-2.39.0.jar"
-    - java -jar /tmp/selenium-server-standalone-2.39.0.jar:
-        background: true
-    - cd server-root; python -m SimpleHTTPServer 8000:
-        background: true
+    - >
+      if [ ! -e /home/ubuntu/play-1.2.7/play ]; then
+        wget --directory-prefix /home/ubuntu/ http://downloads.typesafe.com/play/1.2.7/play-1.2.7.zip
+        unzip -d /home/ubuntu/ /home/ubuntu/play-1.2.7.zip
+      fi
+  cache_directories:
+    - /home/ubuntu/play-1.2.7
 
 #test:
 #  post:
@@ -19,13 +31,6 @@ dependencies:
 #      if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
 #        ./bin/run-integration-tests.sh ${INTEGRATION_TARGET};
 #      fi
-
-test:
-  override:
-    - $ANDROID_HOME/tools/emulator -avd testing -no-window -no-boot-anim -no-audio:
-        background: true
-    - ./wait.sh
-    - ./gradlew clean connectedAndroidTestDevelopmentDebug
 
 
 deployment:
