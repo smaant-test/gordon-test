@@ -4,17 +4,13 @@ machine:
   services:
     - docker
 
-#dependencies:
-#  pre:
-#    - wget -O /tmp/selenium-server-standalone-2.39.0.jar "https://code.google.com/p/selenium/downloads/detail?name=selenium-server-standalone-2.39.0.jar"
-#    - java -jar /tmp/selenium-server-standalone-2.39.0.jar:
-#        background: true
-#    - cd server-root; python -m SimpleHTTPServer 8000:
-#        background: true
-
 dependencies:
   pre:
-    - docker pull ubuntu:14.04
+    - wget -O /tmp/selenium-server-standalone-2.39.0.jar "https://code.google.com/p/selenium/downloads/detail?name=selenium-server-standalone-2.39.0.jar"
+    - java -jar /tmp/selenium-server-standalone-2.39.0.jar:
+        background: true
+    - cd server-root; python -m SimpleHTTPServer 8000:
+        background: true
 
 #test:
 #  post:
