@@ -11,6 +11,10 @@ dependencies:
         background: true
     - cd server-root; python -m SimpleHTTPServer 8000:
         background: true
+  post:
+    - sudo apt-get update; sudo apt-get install -y x11vnc
+    - x11vnc -forever -nopw:
+        background: true
 
 #test:
 #  post:
