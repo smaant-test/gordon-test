@@ -3,6 +3,8 @@ machine:
     version: 2.7.6
   services:
     - docker
+  environment:
+    FOO: bar
 
 dependencies:
   pre:
