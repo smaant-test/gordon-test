@@ -11,8 +11,7 @@ dependencies:
     - wget -O /tmp/selenium-server-standalone-2.44.0.jar "http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar"
     - java -jar /tmp/selenium-server-standalone-2.44.0.jar:
         background: true
-    - cd server-root; python -m SimpleHTTPServer 8000:
-        background: true
+    - cd server-root; bash -c '(setsid python -m SimpleHTTPServer 8000 &)'
   post:
     - sudo apt-get update; sudo apt-get install -y x11vnc
     - x11vnc -forever -nopw:
