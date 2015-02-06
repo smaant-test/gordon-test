@@ -13,10 +13,10 @@ dependencies:
         background: true
     - (setsid python -m SimpleHTTPServer 8000 &):
         pwd: server-root
-  post:
-    - sudo apt-get update; sudo apt-get install -y x11vnc
-    - x11vnc -forever -nopw:
-        background: true
+#  post:
+#    - sudo apt-get update; sudo apt-get install -y x11vnc
+#    - x11vnc -forever -nopw:
+#        background: true
 
 #test:
 #  post:
@@ -27,8 +27,8 @@ dependencies:
 #      fi
 
 
-deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: quiet-depths-3134
+#deployment:
+#  staging:
+#    branch: master
+#    heroku:
+#      appname: quiet-depths-3134
