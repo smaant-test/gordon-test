@@ -27,6 +27,12 @@ dependencies:
 #        ./bin/run-integration-tests.sh ${INTEGRATION_TARGET};
 #      fi
 
+deployment:
+  staging:
+    branch: master
+    commands:
+      - echo "hello ${CIRCLE_NODE_INDEX}":
+          parallel: true
 
 #deployment:
 #  staging:
