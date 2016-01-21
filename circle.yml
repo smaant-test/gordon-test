@@ -28,7 +28,6 @@ dependencies:
 test:
   post:
     - echo "hello" > ${CIRCLE_ARTIFACTS}/hello.txt
-    - echo "world" > ${CIRCLE_ARTIFACTS}/world.txt
 #  post:
 #    - cat ~/.circlerc
 #    - >
