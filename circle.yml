@@ -26,6 +26,8 @@ dependencies:
 #        background: true
 
 test:
+  pre:
+    - ulimit -a
   post:
     - echo "hello" > ${CIRCLE_ARTIFACTS}/hello.txt
 #  post:
