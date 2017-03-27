@@ -34,3 +34,10 @@ jobs:
           command: echo "deploying! (not really) "
           pwd: /
 
+workflows:
+  master:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
