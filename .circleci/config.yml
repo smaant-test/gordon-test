@@ -35,7 +35,10 @@ jobs:
           pwd: /
 
 workflows:
-  master:
+  build:
+    filters:
+      branches:
+        only: /m.ster/
     jobs:
       - build
       - deploy:
