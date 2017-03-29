@@ -35,7 +35,7 @@ jobs:
           pwd: /
 
 workflows:
-  build:
+  build-n-deploy:
     filters:
       branches:
         only: /m.ster/
@@ -44,3 +44,9 @@ workflows:
       - deploy:
           requires:
             - build
+  build-the-rest:
+    filters:
+      branches:
+        ignore: /m.ster/
+    jobs:
+      - build
