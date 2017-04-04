@@ -35,6 +35,7 @@ jobs:
           pwd: /
 
 workflows:
+  version: 1
   build-n-deploy:
     filters:
       branches:
