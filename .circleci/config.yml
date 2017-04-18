@@ -54,20 +54,13 @@ jobs:
       - run: cat ${CIRCLE_UPSTREAM_ARTIFACTS}/build/0/text-data/second
 
 workflows:
-  version: 1
+  version: 2
   build-n-deploy:
-    filters:
-      branches:
-        only: /m.ster/
     jobs:
       - build
       - deploy:
+          filters:
+            branches:
+              only: /m.ster/
           requires:
             - build
-  build-the-rest:
-    filters:
-      branches:
-        ignore: /m.ster/
-    jobs:
-      - build
-
