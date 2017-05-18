@@ -32,6 +32,11 @@ jobs:
             echo "first artifact" > /tmp/my_artifacts/first
             echo "second artifact" > /tmp/my_artifacts/second
 
+      - persist_to_workspace:
+          paths:
+            - /tmp/my_artifacts/*
+            - hello.py
+
       - store_artifacts:
           path: /tmp/my_artifacts
           destination: text-data
