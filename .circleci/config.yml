@@ -28,19 +28,19 @@ jobs:
       - run:
           name: make some files
           command: |
-            mkdir -p /tmp/my_artifacts
-            echo "first artifact" > /tmp/my_artifacts/first
-            echo "second artifact" > /tmp/my_artifacts/second
-            mkdir -p /tmp/my_artifacts/python
-            cp hello.py /tmp/my_artifacts/python/
+            mkdir -p /tmp/my_workspace
+            echo "first artifact" > /tmp/my_workspace/first
+            echo "second artifact" > /tmp/my_workspace/second
+            mkdir -p /tmp/my_workspace/python
+            cp hello.py /tmp/my_workspace/python/
 
       - persist_to_workspace:
-          root: /tmp/my_artifacts
+          root: /tmp/my_workspace
           paths:
             - "*"
 
       - store_artifacts:
-          path: /tmp/my_artifacts
+          path: /tmp/my_workspace
           destination: text-data
 
   deploy:
@@ -52,13 +52,22 @@ jobs:
           command: echo "deploying! (not really) "
           pwd: /
 
-      - run: echo "Upstream artifacts in ${CIRCLE_UPSTREAM_ARTIFACTS}"
+      - run:
+          name: "Workflow workspace env vars"
+          command: |
+            echo "CIRCLE_WORKFLOW_ID=${CIRCLE_WORKFLOW_ID}"
+            echo "CIRCLE_WORKFLOW_JOB_ID=${CIRCLE_WORKFLOW_JOB_ID}"
+            echo "CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS=${CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS}"
+          pwd: /
 
-      - run: find ${CIRCLE_UPSTREAM_ARTIFACTS}
+      - attach_workspace:
+          at: /tmp/my_workspace
 
-      - run: cat ${CIRCLE_UPSTREAM_ARTIFACTS}/build/0/text-data/first
+      - run: find /tmp/my_workspace
 
-      - run: cat ${CIRCLE_UPSTREAM_ARTIFACTS}/build/0/text-data/second
+      - run: cat /tmp/my_workspace/first
+
+      - run: cat /tmp/my_workspace/second
 
 workflows:
   version: 2
