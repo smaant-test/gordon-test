@@ -31,11 +31,14 @@ jobs:
             mkdir -p /tmp/my_artifacts
             echo "first artifact" > /tmp/my_artifacts/first
             echo "second artifact" > /tmp/my_artifacts/second
+            mkdir -p /tmp/my_artifacts/python
+            cp hello.py /tmp/my_artifacts/python/
 
       - persist_to_workspace:
+          root: /tmp/my_artifacts
           paths:
-            - /tmp/my_artifacts/*
-            - hello.py
+            - python/hello.py
+            - "*"
 
       - store_artifacts:
           path: /tmp/my_artifacts
