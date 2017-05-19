@@ -37,7 +37,6 @@ jobs:
       - persist_to_workspace:
           root: /tmp/my_artifacts
           paths:
-            - python/hello.py
             - "*"
 
       - store_artifacts:
