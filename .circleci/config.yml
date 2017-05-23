@@ -52,7 +52,7 @@ jobs:
           at: /tmp/my_workspace
 
       - run:
-          command: echo "third artifact" > /tmp/my_workspace/third
+          command: echo "third artifact!!" > /tmp/my_workspace/third
           pwd: /
 
       - persist_to_workspace:
