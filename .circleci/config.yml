@@ -43,6 +43,23 @@ jobs:
           path: /tmp/my_workspace
           destination: text-data
 
+  test:
+    docker:
+      - image: python:2.7
+    working_directory: /gordon-test
+    steps:
+      - attach_workspace:
+          at: /tmp/my_workspace
+
+      - run:
+          command: echo "third artifact" /tmp/my_workspace/third
+          pwd: /
+
+      - persist_to_workspace:
+          root: /tmp/my_workspace
+          paths:
+            - third
+
   deploy:
     docker:
       - image: python:2.7
@@ -69,11 +86,16 @@ jobs:
 
       - run: cat /tmp/my_workspace/second
 
+      - run: cat /tmp/my_workspace/third
+
 workflows:
   version: 2
   build-n-deploy:
     jobs:
       - build
-      - deploy:
+      - test:
           requires:
             - build
+      - deploy:
+          requires:
+            - test
