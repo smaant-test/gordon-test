@@ -78,15 +78,15 @@ jobs:
           pwd: /
 
       - attach_workspace:
-          at: /tmp/my_workspace
+          at: my_workspace
 
-      - run: find /tmp/my_workspace
+      - run: find /gordon-test/my_workspace
 
-      - run: cat /tmp/my_workspace/first
+      - run: cat my_workspace/first
 
-      - run: cat /tmp/my_workspace/second
+      - run: cat my_workspace/second
 
-      - run: cat /tmp/my_workspace/third
+      - run: cat my_workspace/third
 
 workflows:
   version: 2
