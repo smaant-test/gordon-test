@@ -88,6 +88,8 @@ jobs:
 
       - run: cat my_workspace/third
 
+      - run: echo "failing"; exit 1
+
 workflows:
   version: 2
   build-n-deploy:
