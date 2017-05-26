@@ -73,6 +73,7 @@ jobs:
           name: "Workflow workspace env vars"
           command: |
             echo "CIRCLE_WORKFLOW_ID=${CIRCLE_WORKFLOW_ID}"
+            echo "CIRCLE_WORKFLOW_WORKSPACE_ID=${CIRCLE_WORKFLOW_WORKSPACE_ID}"
             echo "CIRCLE_WORKFLOW_JOB_ID=${CIRCLE_WORKFLOW_JOB_ID}"
             echo "CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS=${CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS}"
           pwd: /
@@ -88,7 +89,7 @@ jobs:
 
       - run: cat my_workspace/third
 
-      - run: echo "failing"; exit 1
+      - run: python -c "import os,sys; sys.exit(int(os.environ['CIRCLE_BUILD_NUM']) % 2)"
 
 workflows:
   version: 2
@@ -101,3 +102,4 @@ workflows:
       - deploy:
           requires:
             - test
+
