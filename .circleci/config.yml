@@ -31,13 +31,15 @@ jobs:
             mkdir -p /tmp/my_workspace
             echo "first artifact" > /tmp/my_workspace/first
             echo "second artifact" > /tmp/my_workspace/second
-            mkdir -p /tmp/my_workspace/python
+            mkdir -p /tmp/my_workspace/python/foo
             cp hello.py /tmp/my_workspace/python/
+            cp hello.py /tmp/my_workspace/python/foo
 
       - persist_to_workspace:
           root: /tmp/my_workspace
           paths:
             - "*"
+            - python/*
 
       - store_artifacts:
           path: /tmp/my_workspace
