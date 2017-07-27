@@ -60,6 +60,23 @@ jobs:
           paths:
             - third
 
+  test2:
+    docker:
+      - image: python:2.7
+    working_directory: /gordon-test
+    steps:
+      - attach_workspace:
+          at: /tmp/my_workspace
+
+      - run:
+          command: echo "third artifact!!" > /tmp/my_workspace/third
+          pwd: /
+
+      - persist_to_workspace:
+          root: /tmp/my_workspace
+          paths:
+            - third
+
   write-no-data:
     docker:
       - image: python:2.7
@@ -85,6 +102,7 @@ jobs:
             echo "CIRCLE_WORKFLOW_WORKSPACE_ID=${CIRCLE_WORKFLOW_WORKSPACE_ID}"
             echo "CIRCLE_WORKFLOW_JOB_ID=${CIRCLE_WORKFLOW_JOB_ID}"
             echo "CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS=${CIRCLE_WORKFLOW_UPSTREAM_JOB_IDS}"
+            echo "CIRCLE_WORKFLOW_CONCURRENCY_MAP=${CIRCLE_WORKFLOW_CONCURRENCY_MAP}"
           pwd: /
 
       - attach_workspace:
@@ -102,7 +120,7 @@ jobs:
 
 workflows:
   version: 2
-  build-n-deploy:
+  breaking-workspaces:
     jobs:
       - build
       - write-no-data:
@@ -111,7 +129,11 @@ workflows:
       - test:
           requires:
             - build
+      - test2:
+          requires:
+            - build
       - deploy:
           requires:
             - test
+            - test2
             - write-no-data
