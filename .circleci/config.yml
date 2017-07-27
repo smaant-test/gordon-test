@@ -70,12 +70,14 @@ jobs:
 
       - run:
           command: echo "fourth artifact!!" > /tmp/my_workspace/fourth
+          command: echo "fifth artifact!!" > /tmp/my_workspace/first
           pwd: /
 
       - persist_to_workspace:
           root: /tmp/my_workspace
           paths:
             - fourth
+            - first
 
   write-no-data:
     docker:
