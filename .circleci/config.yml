@@ -37,10 +37,15 @@ jobs:
           command: echo "third artifact!!" > /tmp/my_workspace/third
           pwd: /
 
+      - run:
+          command: echo "overwritten first artifact!!" > /tmp/my_workspace/first
+          pwd: /
+
       - persist_to_workspace:
           root: /tmp/my_workspace
           paths:
             - third
+            - first
 
   test2:
     docker:
