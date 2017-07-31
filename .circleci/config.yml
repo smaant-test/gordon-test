@@ -8,24 +8,6 @@ jobs:
       - checkout
 
       - run:
-          command: pip install -r requirements.txt
-          name: Install dependencies
-
-#      - run: apt-get update
-#      - run: apt-get install java
-#
-#      - run: wget -O /tmp/selenium-server-standalone-2.45.0.jar "http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
-#
-#      - run:
-#          command: java -jar /tmp/selenium-server-standalone-2.45.0.jar
-#          background: true
-
-      - run:
-          command: setsid python -m SimpleHTTPServer 8080
-          pwd: /gordon-test/server-root
-          background: true
-
-      - run:
           name: make some files
           command: |
             mkdir -p /tmp/my_workspace
@@ -69,15 +51,16 @@ jobs:
           at: /tmp/my_workspace
 
       - run:
-          command: echo "fourth artifact!!" > /tmp/my_workspace/fourth
-          command: echo "fifth artifact!!" > /tmp/my_workspace/third
+          command: |
+            echo "fourth artifact!!" > /tmp/my_workspace/fourth
+            echo "fifth artifact!!" > /tmp/my_workspace/fifth
           pwd: /
 
       - persist_to_workspace:
           root: /tmp/my_workspace
           paths:
             - fourth
-            - third
+            - fifth
 
   write-no-data:
     docker:
@@ -112,11 +95,13 @@ jobs:
 
       - run: find /gordon-test/my_workspace
 
-      - run: cat my_workspace/first
-
-      - run: cat my_workspace/second
-
-      - run: cat my_workspace/third
+      - run:
+          command: |
+            find /gordon-test/my_workspace -type f | while read _f; do
+              echo
+              echo ">>> ${_f} <<<"
+              cat ${_f}
+            done
 
       - run: python -c "import os,sys; sys.exit(int(os.environ['CIRCLE_BUILD_NUM']) % 2)"
 
