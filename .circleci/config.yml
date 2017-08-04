@@ -60,6 +60,15 @@ jobs:
           paths:
             - third
 
+  write-no-data:
+    docker:
+      - image: python:2.7
+    working_directory: /gordon-test
+    steps:
+      - run:
+          command: echo "hi"
+          pwd: /
+
   deploy:
     docker:
       - image: python:2.7
@@ -96,10 +105,13 @@ workflows:
   build-n-deploy:
     jobs:
       - build
+      - write-no-data:
+          requires:
+            - build
       - test:
           requires:
             - build
       - deploy:
           requires:
             - test
-
+            - write-no-data
